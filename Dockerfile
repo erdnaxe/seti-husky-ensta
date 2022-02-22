@@ -7,5 +7,9 @@ RUN apt-get update \
   ros-melodic-husky-simulator ros-melodic-rqt-graph \
   && rm -rf /var/lib/apt/lists/*
 
-# Par défaut, lancer une simulation du Husky dans un monde vide
-CMD roslaunch husky_gazebo husky_empty_world.launch
+# Setup environnement variables
+ENV HUSKY_LOGITECH=1
+
+# Par défaut, lance une simulation du Husky
+COPY husky-gazebo.launch /
+CMD roslaunch husky-gazebo.launch

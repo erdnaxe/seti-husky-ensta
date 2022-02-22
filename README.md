@@ -12,7 +12,7 @@ xhost +local:root
 # Lancement du conteneur
 docker run -it --rm --name ros -v /tmp/.X11-unix:/tmp/.X11-unix \
   -e DISPLAY -v $HOME/.Xauthority:/root/.Xauthority \
-  -h $(hostname) --device=/dev/dri:/dev/dri husky-ensta
+  -h $(hostname) --device=/dev/dri --device=/dev/input/js0 husky-ensta
 
 # Lancement d'une autre commande dans le même conteneur pour Rviz
 docker exec -it ros /opt/ros/melodic/env.sh roslaunch husky_viz view_robot.launch
